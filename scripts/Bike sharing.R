@@ -49,17 +49,38 @@ CSplot
 Data$holiday <- as.character(Data$holiday)
 Data$holiday <- revalue(Data$holiday, c("1"="Yes", "0"="No"))
 
-#Boxplot with counts per season
+#Boxplot with counts per whether or not there is a holiday
 CHplot <- ggplot(data = Data, mapping = aes(x = holiday, y = count, group=holiday)) +
   geom_boxplot(alpha = 0) + theme_bw()
 CHplot
 
-#Test to see if there is a difference in counts between seasons
+#Test to see if there is a difference in counts between whether or not there is a holiday
 wilcox.test(count ~ holiday, data = Data)
 #Since the p-value is 0.8646 we can conclude that there is no difference between whether or not there is a holiday
 
-#Adding the (non)differences between seasons in the boxplot
+#Adding the (non)differences between whether or not there is a holiday in the boxplot
 CHplot <- CHplot + 
   annotate("text", x=1, y=700, label="a", size=7) +
   annotate("text", x=2, y=760, label="a", size=7)
 CHplot
+
+##Check if there is a relationship between count and workingday####
+
+#Making season as a factor and renaming values in workingday
+Data$workingday <- as.character(Data$workingday)
+Data$workingday <- revalue(Data$workingday, c("1"="Yes", "0"="No"))
+
+#Boxplot with counts per workingday
+CWplot <- ggplot(data = Data, mapping = aes(x = workingday, y = count, group=workingday)) +
+  geom_boxplot(alpha = 0) + theme_bw() 
+CWplot
+
+#Test to see if there is a difference in counts between whether or not there is a workingday
+wilcox.test(count ~ workingday, data = Data)
+#Since the p-value is 0.9679 we can conclude that there is no difference between whether or not there is a workingday
+
+#Adding the (non)differences between whether or not there is a workingday in the boxplot
+CWplot <- CWplot + 
+  annotate("text", x=1, y=735, label="a", size=7) +
+  annotate("text", x=2, y=675, label="a", size=7)
+CWplot
