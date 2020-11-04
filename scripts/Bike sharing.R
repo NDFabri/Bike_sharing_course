@@ -66,7 +66,7 @@ CHplot
 
 ##Check if there is a relationship between count and workingday####
 
-#Making season as a factor and renaming values in workingday
+#Making workingday as a factor and renaming values in workingday
 Data$workingday <- as.character(Data$workingday)
 Data$workingday <- revalue(Data$workingday, c("1"="Yes", "0"="No"))
 
@@ -84,3 +84,29 @@ CWplot <- CWplot +
   annotate("text", x=1, y=735, label="a", size=7) +
   annotate("text", x=2, y=675, label="a", size=7)
 CWplot
+
+##Check if there is a relationship between count and weather####
+
+#Making weather as a factor and renaming values in weather
+Data$weather <- as.character(Data$weather)
+
+#Boxplot with counts per weather
+CWeplot <- ggplot(data = Data, mapping = aes(x = weather, y = count, group=weather)) +
+  geom_boxplot(alpha = 0) + theme_bw() +
+  xlab("weathertype")
+CWeplot
+
+#Test to see if there is a difference in counts between weather
+kruskal.test(count ~ weather, data = Data)
+#Since the p-value is lower than 0.001 we assume that there is a difference
+#Dunn test as a post-hoc test (to see where the difference is)
+dunn.test(Data$count, Data$weather, method = "sidak")
+
+#Adding the differences between weather in the boxplot
+CWeplot <- CWeplot + 
+  annotate("text", x=1, y=750, label="a", size=7) +
+  annotate("text", x=2, y=655, label="b", size=7) +
+  annotate("text", x=3, y=420, label="c", size=7) +
+  annotate("text", x=4, y=220, label="a,b,c", size=7)
+CWeplot
+
