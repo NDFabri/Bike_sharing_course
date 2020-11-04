@@ -73,12 +73,6 @@ CWplot
 wilcox.test(count ~ workingday, data = Data)
 #Since the p-value is 0.9679 we can conclude that there is no difference between whether or not there is a workingday
 
-#Adding the (non)differences between whether or not there is a workingday in the boxplot
-CWplot <- CWplot + 
-  annotate("text", x=1, y=735, label="a", size=7) +
-  annotate("text", x=2, y=675, label="a", size=7)
-CWplot
-
 ##Check if there is a relationship between count and weather####
 
 #Making weather as a factor and renaming values in weather
