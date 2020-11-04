@@ -58,12 +58,6 @@ CHplot
 wilcox.test(count ~ holiday, data = Data)
 #Since the p-value is 0.8646 we can conclude that there is no difference between whether or not there is a holiday
 
-#Adding the (non)differences between whether or not there is a holiday in the boxplot
-CHplot <- CHplot + 
-  annotate("text", x=1, y=700, label="a", size=7) +
-  annotate("text", x=2, y=760, label="a", size=7)
-CHplot
-
 ##Check if there is a relationship between count and workingday####
 
 #Making workingday as a factor and renaming values in workingday
@@ -110,3 +104,19 @@ CWeplot <- CWeplot +
   annotate("text", x=4, y=220, label="a,b,c", size=7)
 CWeplot
 
+
+##Check if there is a relationship between count and temp####
+
+#Scatterplot with counts per temp
+CTplot <- ggplot(Data, aes(x=temp, y=count)) +
+  geom_point() + theme_bw()
+CTplot
+
+#Test to see if there is a association between counts and temp
+m1 <- lm(count ~ temp, data=Data, family=nbinom2)
+summary(m1)
+#Since the p-value is lower than 0.001 we asume that there is an association between counts and temp
+
+#Adding regression line to the scatterplot
+CTplot <- CTplot + geom_smooth(method="lm")
+CTplot
