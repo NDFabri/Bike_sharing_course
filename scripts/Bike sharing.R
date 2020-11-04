@@ -107,10 +107,26 @@ CTplot <- ggplot(Data, aes(x=temp, y=count)) +
 CTplot
 
 #Test to see if there is a association between counts and temp
-m1 <- lm(count ~ temp, data=Data, family=nbinom2)
+m1 <- lm(count ~ temp, data=Data)
 summary(m1)
 #Since the p-value is lower than 0.001 we asume that there is an association between counts and temp
 
 #Adding regression line to the scatterplot
 CTplot <- CTplot + geom_smooth(method="lm")
 CTplot
+
+##Check if there is a relationship between count and atemp####
+
+#Scatterplot with counts per atemp
+CAplot <- ggplot(Data, aes(x=atemp, y=count)) +
+  geom_point() + theme_bw()
+CAplot
+
+#Test to see if there is a association between counts and atemp
+m2 <- lm(count ~ atemp, data=Data)
+summary(m2)
+#Since the p-value is lower than 0.001 we asume that there is an association between counts and atemp
+
+#Adding regression line to the scatterplot
+CAplot <- CAplot + geom_smooth(method="lm")
+CAplot
