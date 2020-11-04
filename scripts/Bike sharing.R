@@ -130,3 +130,19 @@ summary(m2)
 #Adding regression line to the scatterplot
 CAplot <- CAplot + geom_smooth(method="lm")
 CAplot
+
+##Check if there is a relationship between count and humidity####
+
+#Scatterplot with counts per humidity
+CHuplot <- ggplot(Data, aes(x=humidity, y=count)) +
+  geom_point() + theme_bw()
+CHuplot
+
+#Test to see if there is a association between counts and humidity
+m3 <- lm(count ~ humidity, data=Data)
+summary(m3)
+#Since the p-value is lower than 0.001 we asume that there is an association between counts and humidity
+
+#Adding regression line to the scatterplot
+CHuplot <- CHuplot + geom_smooth(method="lm")
+CHuplot
