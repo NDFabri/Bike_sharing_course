@@ -146,3 +146,19 @@ summary(m3)
 #Adding regression line to the scatterplot
 CHuplot <- CHuplot + geom_smooth(method="lm")
 CHuplot
+
+##Check if there is a relationship between count and windspeed####
+
+#Scatterplot with counts per windspeed
+CWiplot <- ggplot(Data, aes(x=windspeed, y=count)) +
+  geom_point() + theme_bw()
+CWiplot
+
+#Test to see if there is a association between counts and windspeed
+m4 <- lm(count ~ windspeed, data=Data)
+summary(m4)
+#Since the p-value is lower than 0.001 we asume that there is an association between counts and windspeed
+
+#Adding regression line to the scatterplot
+CWiplot <- CWiplot + geom_smooth(method="lm")
+CWiplot
