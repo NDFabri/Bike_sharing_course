@@ -99,7 +99,6 @@ dev.off()
 ##Check if there is an association between count and atemp####
 
 #See if there is an association between count and atemp
-#And if so, make a scatterplot with regressionline
 CA <- bikecourse_function(Data$count, Data$atemp, data=Data,
                     threshold = 0.05,
                     xlab = "atemp", ylab = "count",
@@ -114,7 +113,6 @@ dev.off()
 ##Check if there is an association between count and humidity####
 
 #See if there is an association between count and humidity
-#And if so, make a scatterplot with regressionline
 CHu <-bikecourse_function(Data$count, Data$humidity, data=Data,
                     threshold = 0.05,
                     xlab = "humidity", ylab = "count",
@@ -129,7 +127,6 @@ dev.off()
 ##Check if there is an association between count and windspeed####
 
 #See if there is an association between count and windspeed
-#And if so, make a scatterplot with regressionline
 CWi <-bikecourse_function(Data$count, Data$windspeed, data=Data,
                     threshold = 0.05,
                     xlab = "windspeed", ylab = "count",
