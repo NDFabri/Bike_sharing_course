@@ -12,10 +12,9 @@
 #' @example
 #' dunn_function(Data$count, Data$season, threshold = 0.05, xlab ="season", ylab = "count", yax = 900, size = 7)
 
-
 dunn_function <- function(x, y, threshold=0.05,
                           xlab="x", ylab="y", yax, size=7){
-  test <- dunn.test(x, y, method = "sidak", table=FALSE, list=FALSE)
+  test <- dunn.test::dunn.test(x, y, method = "sidak", table=FALSE, list=FALSE)
   frame <- data.frame(test$P.adjusted, test$comparisons)
   pvals <- test$P.adjusted
   A <- NROW(frame)
