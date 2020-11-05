@@ -28,7 +28,7 @@ bikecourse_function <- function(x, y, data, threshold,
   }
   else{
     result <- Spearman_function(x,y)
-    if(result$p.value<=treshold){
+    if(result$p.value<=threshold){
       print("Association")
       return(ggplot_function(x,y,xlab,ylab,data))
     }
