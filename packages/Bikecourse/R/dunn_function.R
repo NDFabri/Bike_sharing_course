@@ -23,7 +23,7 @@ dunn_function <- function(x, y, threshold=0.05,
   dst <- as.dist(dst)
   dst <- as.matrix(dst, upper=TRUE, lower=TRUE)
   diag(dst) <- 1
-  LET <- multcompLetters(dst,
+  LET <- multcompView::multcompLetters(dst,
                          compare="<",
                          threshold=threshold,
                          Letters=letters,
