@@ -1,24 +1,24 @@
 rm(list=ls())
-##Installing and loading libraries####
+##Installing and loading libraries (RUN THIS PART LINE BY LINE!!)####
 
 # Install and load package devtools
 if (!requireNamespace("devtools"))
   install.packages("devtools")
-library("devtools")
+library("devtools") #Use of version 2.0.2
 
 # Install and load package Bikecourse
 install_github('NDFabri/Bike_sharing_course/packages/Bikecourse@main')
-library("Bikecourse")
+library("Bikecourse") #Use of version 0.1.0
 
 # Install and load package tidyverse
 if (!requireNamespace("tidyverse"))
   install.packages("tidyverse")
-library("tidyverse")
+library("tidyverse") #Use of version 1.2.1
 
 # Install and load package plyr
 if (!requireNamespace("plyr"))
   install.packages("plyr")
-library("plyr")
+library("plyr") #Use of version 1.8.4
 
 ##Loading datafile####
 Data <- read_csv("data/train.csv")
