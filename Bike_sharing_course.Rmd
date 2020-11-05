@@ -134,5 +134,5 @@ ggarrange(CS, CWe, CT, CA, CHu, CWi, ncol = 3, nrow = 2)
 Figure 1: associations between the number of bikes taken per hour (count) and the parameters where I found an association
 
 ## Literature
-Rstudio version 3.6.0
+R version 3.6.0  
 Database: Fanaee-T, Hadi, and Gama, Joao, Event labeling combining ensemble detectors and background knowledge, Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg.
