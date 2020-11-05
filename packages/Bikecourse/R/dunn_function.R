@@ -19,7 +19,8 @@ dunn_function <- function(x, y, threshold=0.05,
   pvals <- test$P.adjusted
   A <- NROW(frame)
   dst <- matrix(NA, ((1+sqrt(1-(-8*A)))/2),((1+sqrt(1-(-8*A)))/2))
-  dst[lower.tri(dst)] <- pvals
+  dst[upper.tri(dst)] <- pvals
+  dst <- t(dst)
   dst <- as.dist(dst)
   dst <- as.matrix(dst, upper=TRUE, lower=TRUE)
   diag(dst) <- 1
